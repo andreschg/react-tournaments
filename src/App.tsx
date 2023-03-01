@@ -1,7 +1,11 @@
 import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+
 import Navbar from './components/Navbar';
-import Users from './content/Users/Users';
+import UsersManagement from './pages/Users/UsersManagement';
+import AppBar from './components/AppBar';
 
 import './App.css';
 
@@ -13,12 +17,16 @@ const darkTheme = createTheme({
 
 function App() {
   return (
-    <div className='App'>
-      <ThemeProvider theme={darkTheme} >
-        <Navbar />
-        <Users />
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={darkTheme} >
+      {/* <Navbar>
+        <UsersManagement />
+      </Navbar> */}
+      <CssBaseline />
+      <AppBar />
+      <Container>
+        <UsersManagement />
+      </Container>
+    </ThemeProvider>
   );
 }
 

@@ -91,7 +91,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer() {
+export default function MiniDrawer(props: { children: any}) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -192,7 +192,7 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-
+        { props.children }
       </Box>
     </Box>
   );
