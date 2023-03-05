@@ -7,7 +7,11 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
-export default function AppBar() {
+interface AppBarProps {
+  onMenuIconClick: () => void;
+}
+
+export default function AppBar({ onMenuIconClick }: AppBarProps) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <MuiAppBar position="static">
@@ -18,6 +22,7 @@ export default function AppBar() {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={onMenuIconClick}
           >
             <MenuIcon />
           </IconButton>
