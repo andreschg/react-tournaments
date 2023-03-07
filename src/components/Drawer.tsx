@@ -14,6 +14,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { styled } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -77,6 +78,9 @@ export default function Drawer ({ open, onClickCloseIcon }: DrawerProps) {
           </ListItemButton>
         </ListItem>
       ))}
+      <ListItemButton component={Link} to="/users">
+        <ListItemText primary="Users" />
+      </ListItemButton>
     </List>
   </MuiDrawer>
   );
