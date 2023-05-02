@@ -33,6 +33,11 @@ interface DrawerProps {
 }
 
 export default function Drawer ({ open, onClickCloseIcon }: DrawerProps) {
+
+  const onClickLink = () => {
+    onClickCloseIcon();
+  }
+
   return (
     <MuiDrawer
     sx={{
@@ -78,8 +83,11 @@ export default function Drawer ({ open, onClickCloseIcon }: DrawerProps) {
           </ListItemButton>
         </ListItem>
       ))}
-      <ListItemButton component={Link} to="/users">
+      <ListItemButton component={Link} to="/users" onClick={onClickLink}>
         <ListItemText primary="Users" />
+      </ListItemButton>
+      <ListItemButton component={Link} to="/squads" onClick={onClickLink}>
+        <ListItemText primary="Squads" />
       </ListItemButton>
     </List>
   </MuiDrawer>

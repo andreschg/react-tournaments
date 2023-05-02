@@ -7,6 +7,8 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import AppBar from '../components/AppBar';
 import Drawer from '../components/Drawer';
+import { UserProvider } from '../hooks/useUsers';
+import { SquadProvider } from '../hooks/useSquads';
 
 import '../App.css';
 
@@ -29,15 +31,19 @@ function Root() {
 
   return (
     <ThemeProvider theme={darkTheme} >
-      {/* <Navbar>
-        <UsersManagement />
-      </Navbar> */}
       <CssBaseline />
-      <AppBar onMenuIconClick={openDrawer} />
-      <Drawer open={isDrawerOpen} onClickCloseIcon={closeDrawer} />
-      <Container>
-        <Outlet />
-      </Container>
+      <UserProvider>
+        <SquadProvider>
+          {/* <Navbar>
+            <UsersManagement />
+          </Navbar> */}
+          <AppBar onMenuIconClick={openDrawer} />
+          <Drawer open={isDrawerOpen} onClickCloseIcon={closeDrawer} />
+          <Container>
+            <Outlet />
+          </Container>
+        </SquadProvider>
+      </UserProvider>
     </ThemeProvider>
   );
 }

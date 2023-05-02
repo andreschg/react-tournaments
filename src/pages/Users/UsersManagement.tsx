@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import { collection, addDoc } from 'firebase/firestore';
 import { Button, Grid } from '@mui/material';
-import { useCollection, useCollectionData } from 'react-firebase-hooks/firestore';
-import { firestore } from '../../firebase/firebase';
+
 import UsersTable from './UsersTable';
 import { User } from './User';
 import AddUserDialog from './AddUserDialog/AddUserDialog';
+import useUsers from '../../hooks/useUsers';
 
 const UsersManagement: React.FC = () => {
-  const usersRef: any = collection(firestore, 'users');
-  const [users] = useCollectionData<User>(usersRef);
-  // const [users] = useCollectionData(collection(firestore, 'users'));
+  const [users, addUser] = useUsers();
   const [openAddUserDialog, setOpenAddUserDialog] = useState(false);
 
   console.log(users);
@@ -25,7 +22,7 @@ const UsersManagement: React.FC = () => {
 
   const onUserSave = async (user: User) => {
     console.log("Saving");
-    await addDoc(usersRef, user);
+    await addUser(user);
     setOpenAddUserDialog(false);
   }
 
